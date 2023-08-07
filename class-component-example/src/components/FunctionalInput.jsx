@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import TodoCount from './TodoCount'
 
 // eslint-disable-next-line react/function-component-definition, react/prop-types
 const FunctionalInput = ({ name }) => {
@@ -21,28 +22,31 @@ const FunctionalInput = ({ name }) => {
   };
 
   return (
-    <section>
-      <h3>{name}</h3>
-      {/* The input field to enter To-Do's */}
-      <form onSubmit={handleSubmit}>
-        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-        <label htmlFor="task-entry">Enter a task: </label>
-        <input
-          type="text"
-          name="task-entry"
-          value={inputVal}
-          onChange={handleInputChange}
-        />
-        <button type="submit">Submit</button>
-      </form>
-      <h4>All the tasks!</h4>
-      {/* The list of all the To-Do's, displayed */}
-      <ul>
-        {todos.map((todo) => (
-          <li key={todo}>{todo}</li>
-        ))}
-      </ul>
-    </section>
+    <>
+      <TodoCount todos={todos}/>
+      <section>
+        <h3>{name}</h3>
+        {/* The input field to enter To-Do's */}
+        <form onSubmit={handleSubmit}>
+          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+          <label htmlFor="task-entry">Enter a task: </label>
+          <input
+            type="text"
+            name="task-entry"
+            value={inputVal}
+            onChange={handleInputChange}
+          />
+          <button type="submit">Submit</button>
+        </form>
+        <h4>All the tasks!</h4>
+        {/* The list of all the To-Do's, displayed */}
+        <ul>
+          {todos.map((todo) => (
+            <li key={todo}>{todo}</li>
+          ))}
+        </ul>
+      </section>
+    </>
   );
 };
 
